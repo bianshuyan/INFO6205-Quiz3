@@ -44,7 +44,28 @@ public class TwoStack {
        
         //Loop over the tokens until you reach the end of the expression
         //TODO
+        for (String token : tokens) {
+            if (token.equals("(")) {
 
+            } else if (token.equals("+") || token.equals("-") || token.equals("*") || token.equals("/")) {
+                ops.push(token);
+            } else if (token.equals(")")) {
+                double rand2 = vals.pop();
+                double rand1 = vals.pop();
+                String op = ops.pop();
+                if (op.equals("+")) {
+                    vals.push(rand1 + rand2);
+                } else if (op.equals("-")) {
+                    vals.push(rand1 - rand2);
+                } else if (op.equals("*")) {
+                    vals.push(rand1 * rand2);
+                } else if (op.equals("/")) {
+                    vals.push(rand1 / rand2);
+                }
+            } else {
+                vals.push(Double.parseDouble(token));
+            }
+        }
         
 
 
